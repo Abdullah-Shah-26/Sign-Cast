@@ -14,7 +14,7 @@ class Config:
     
     # Server Configuration
     HOST: str = os.getenv("HOST", "127.0.0.1")
-    PORT: int = int(os.getenv("PORT", "8000"))
+    PORT: int = int(os.getenv("PORT", "8080"))  # Cloud Run uses 8080 by default
     DEBUG: bool = os.getenv("DEBUG", "true").lower() == "true"
     
     # API Keys and External Services
