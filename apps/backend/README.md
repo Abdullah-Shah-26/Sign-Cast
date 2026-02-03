@@ -84,6 +84,7 @@ LOG_LEVEL=DEBUG
 ### System Dependencies
 
 - **ffmpeg**: Required for audio file conversion in the /transcribe endpoint. Install it using your system package manager:
+
   - macOS: `brew install ffmpeg`
   - Ubuntu/Debian: `sudo apt-get install ffmpeg`
   - Windows: [Download from ffmpeg.org](https://ffmpeg.org/download.html) and add to PATH.
@@ -116,6 +117,33 @@ uvicorn main:app --reload
 ```
 
 The backend will be available at the configured HOST:PORT (default: `http://127.0.0.1:8000`).
+
+## Deploying to Railway
+
+The backend is configured for Railway (Dockerfile, `railway.json`, healthcheck at `/health`). To avoid CLI deployment errors:
+
+1. **Set the service Root Directory** (required for this monorepo):
+
+   - In [Railway](https://railway.app) → your project → select the backend service → **Settings**.
+   - Set **Root Directory** to: `SignCast/apps/backend`.
+   - This makes Railway build and deploy only from the backend folder.
+
+2. **Deploy from the repo root:**
+
+   ```bash
+   railway link   # link to your backend service if needed
+   railway up
+   ```
+
+   **Or** deploy from the backend directory (no Root Directory change needed):
+
+   ```bash
+   cd SignCast/apps/backend
+   railway link
+   railway up
+   ```
+
+3. **Environment variables:** Set `HOST=0.0.0.0` and any API keys (e.g. `GROQ_API_KEY`) in the Railway service **Variables** tab. Railway sets `PORT` automatically.
 
 ## Configuration
 
