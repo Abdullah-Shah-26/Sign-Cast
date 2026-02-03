@@ -20,11 +20,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Expose port
-EXPOSE 8080
+EXPOSE 8000
 
 # Set environment variables
 ENV HOST=0.0.0.0
-ENV PORT=8080
+ENV PORT=8000
 
 # Run the application
 CMD ["python", "run_backend.py"]
