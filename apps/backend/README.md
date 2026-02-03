@@ -120,22 +120,28 @@ The backend will be available at the configured HOST:PORT (default: `http://127.
 
 ## Deploying to Railway
 
-The backend is configured for Railway (Dockerfile, `railway.json`, healthcheck at `/health`). To avoid CLI deployment errors:
+The backend is configured for Railway (Dockerfile, `railway.json`, healthcheck at `/health`). Use one of these methods so the **Root Directory** setting never blocks deploys.
 
-1. **Set the service Root Directory** (required for this monorepo):
+### Recommended: Deploy backend as root (no Root Directory needed)
 
-   - In [Railway](https://railway.app) → your project → select the backend service → **Settings**.
-   - Set **Root Directory** to: `SignCast/apps/backend`.
-   - This makes Railway build and deploy only from the backend folder.
+1. **Clear Root Directory** in Railway so it is not used:
 
-2. **Deploy from the repo root:**
+   - [Railway](https://railway.app) → your project → **signcast-backend** → **Settings** → **Source**.
+   - Set **Root Directory** to **empty** (clear the field and save).
+
+2. **Deploy using the path-as-root flag** (from your workspace root, e.g. `Sign-Bridge`):
 
    ```bash
-   railway link   # link to your backend service if needed
-   railway up
+   railway link    # choose your project and signcast-backend service
+   railway up SignCast/apps/backend --path-as-root
    ```
 
-   **Or** deploy from the backend directory (no Root Directory change needed):
+   This uploads only `SignCast/apps/backend` and uses it as the project root, so Railway never looks for a Root Directory path.
+
+### Alternative: Deploy from the backend folder
+
+1. **Clear Root Directory** in Railway (leave it empty), as above.
+2. From the backend folder:
 
    ```bash
    cd SignCast/apps/backend
@@ -143,7 +149,15 @@ The backend is configured for Railway (Dockerfile, `railway.json`, healthcheck a
    railway up
    ```
 
-3. **Environment variables:** Set `HOST=0.0.0.0` and any API keys (e.g. `GROQ_API_KEY`) in the Railway service **Variables** tab. Railway sets `PORT` automatically.
+   The “linked directory” is then the backend folder, so the next `railway up` uploads that folder as the root.
+
+### If you use GitHub (push-to-deploy) only
+
+- Connect the repo in Railway and set **Root Directory** to **`apps/backend`** (your GitHub repo root is Sign-Cast, which contains `apps/backend`).
+
+### Environment variables
+
+Set `HOST=0.0.0.0` and any API keys (e.g. `GROQ_API_KEY`) in the service **Variables** tab. Railway sets `PORT` automatically.
 
 ## Configuration
 
