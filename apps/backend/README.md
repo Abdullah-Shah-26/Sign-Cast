@@ -120,7 +120,7 @@ The backend will be available at the configured HOST:PORT (default: `http://127.
 
 ## Deploying to Railway
 
-The backend is configured for Railway (Dockerfile, `railway.json`, healthcheck at `/health`). Use one of these methods so the **Root Directory** setting never blocks deploys.
+The backend is configured for Railway using **Nixpacks** (no Docker): `railway.json`, `nixpacks.toml` (Python + ffmpeg), and healthcheck at `/health`. Use one of these methods so the **Root Directory** setting never blocks deploys.
 
 ### Recommended: Deploy backend as root (no Root Directory needed)
 
@@ -157,7 +157,11 @@ The backend is configured for Railway (Dockerfile, `railway.json`, healthcheck a
 
 ### Environment variables
 
-Set `HOST=0.0.0.0` and any API keys (e.g. `GROQ_API_KEY`) in the service **Variables** tab. Railway sets `PORT` automatically.
+In the service **Variables** tab set:
+
+- **`HOST=0.0.0.0`** (required so the server listens on Railway’s port)
+- **`PORT`** is set by Railway automatically
+- Any API keys (e.g. `GROQ_API_KEY`)
 
 ## Configuration
 

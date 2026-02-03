@@ -1,0 +1,5 @@
+# Nixpacks config: Python app + ffmpeg for Whisper (no Docker)
+providers = ["python"]
+
+[phases.setup]
+nixPkgs = ["...", "ffmpeg"]
