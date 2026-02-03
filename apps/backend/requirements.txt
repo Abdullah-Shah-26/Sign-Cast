@@ -7,9 +7,5 @@ python-dotenv
 # Speech-to-text
 openai-whisper
 
-# ML / translation - CPU-only PyTorch for compatibility
-torch==2.3.1+cpu --find-links https://download.pytorch.org/whl/torch_stable.html
-signwriting-translation @ git+https://github.com/sign-language-processing/signwriting-translation.git
-
 # Ensures an ffmpeg binary is available on Windows if not installed system-wide
 imageio-ffmpeg
