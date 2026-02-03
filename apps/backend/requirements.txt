@@ -4,8 +4,5 @@ python-multipart
 requests
 python-dotenv
 
-# Speech-to-text
-openai-whisper
-
-# Ensures an ffmpeg binary is available on Windows if not installed system-wide
-imageio-ffmpeg
+# Transcription: use Groq API (set GROQ_API_KEY). No local Whisper = small image (<4 GB).
+# For local dev with offline Whisper: pip install openai-whisper imageio-ffmpeg

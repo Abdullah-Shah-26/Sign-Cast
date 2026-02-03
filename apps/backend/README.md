@@ -12,9 +12,9 @@ This backend provides the core API services for the SignBridge application, incl
 
 ### POST /transcribe
 
-- Accepts: WAV audio file (multipart/form-data)
+- Accepts: WAV (or other) audio file (multipart/form-data)
 - Returns: JSON with transcribed text
-- Uses: Python Whisper library for offline transcription
+- Uses: **Groq Whisper API** when `GROQ_API_KEY` is set (Railway/prod); optional local openai-whisper for dev
 
 ### POST /simplify_text
 
@@ -160,8 +160,11 @@ The backend is configured for Railway using **Nixpacks** (no Docker): `railway.j
 In the service **Variables** tab set:
 
 - **`HOST=0.0.0.0`** (required so the server listens on Railway’s port)
+- **`GROQ_API_KEY`** (required for /transcribe on Railway; get one at [groq.com](https://console.groq.com))
 - **`PORT`** is set by Railway automatically
-- Any API keys (e.g. `GROQ_API_KEY`)
+- Any other API keys (e.g. for simplify, pose)
+
+**Railway free tier (<4 GB image):** This backend is slim by default—transcription uses Groq API (no local Whisper), and SignWriting translation is disabled on deploy. For full SignWriting locally, install `signwriting_translation` and `torch`.
 
 ## Configuration
 

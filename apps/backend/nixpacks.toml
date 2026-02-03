@@ -1,5 +1,3 @@
-# Nixpacks config: Python app + ffmpeg for Whisper (no Docker)
+# Nixpacks config: slim backend for Railway free tier (<4 GB image)
+# Transcription via Groq API; no local Whisper/PyTorch in prod.
 providers = ["python"]
-
-[phases.setup]
-nixPkgs = ["...", "ffmpeg"]
