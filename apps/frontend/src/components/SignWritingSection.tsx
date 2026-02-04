@@ -39,7 +39,7 @@ const SignWritingSection: React.FC<SignWritingSectionProps> = ({
           </div>
         </div>
       </div>
-      <div className="flex-1 pt-6">
+      <div className="flex-1 pt-6 min-h-0 flex flex-col">
         <div className="flex items-center justify-between mb-4">
           <span className="text-xs font-medium text-black dark:text-gray-400">
             {isGeneratingSigns
@@ -69,8 +69,8 @@ const SignWritingSection: React.FC<SignWritingSectionProps> = ({
             </div>
           </div>
         ) : (
-          <div className="h-full flex flex-col">
-            <div className="scrollable-container h-full max-h-[350px]">
+          <div className="flex-1 min-h-0 flex flex-col">
+            <div className="scrollable-container flex-1 min-h-0">
               <div
                 className={
                   signWriting.length === 0

@@ -85,14 +85,9 @@ SignCast uses **local AI processing** with optional online enhancements:
 |                | PyTorch                 | ML Framework        |
 | **AI/ML**      | SignWriting Translation | Text-to-Sign Model  |
 |                | Groq API                | Text Simplification |
-| **Deployment** | Vercel                  | Frontend Hosting    |
-|                | Render                  | Backend Hosting     |
+
 
 ## Quick Start
-
-### Try the Demo
-
-Visit [signcast.vercel.app](https://signcast.vercel.app) to try SignCast instantly.
 
 ### Run Locally
 

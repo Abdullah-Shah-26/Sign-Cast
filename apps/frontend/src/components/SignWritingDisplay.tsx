@@ -16,6 +16,7 @@ const SignWritingDisplay: React.FC<SignWritingDisplayProps> = ({
   const [normalizedTokens, setNormalizedTokens] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const containerRef = useRef<HTMLDivElement>(null);
+  const shouldCenter = direction === "col" && normalizedTokens.length <= 1;
 
   useEffect(() => {
     const loadFonts = async () => {
@@ -185,7 +186,7 @@ const SignWritingDisplay: React.FC<SignWritingDisplayProps> = ({
   }
 
   return (
-    <div className="h-full flex flex-col">
+    <div className="h-full flex flex-col min-h-0">
       {/* Save as Image Button */}
       <div className="flex justify-end mb-2">
         <button
@@ -210,10 +211,10 @@ const SignWritingDisplay: React.FC<SignWritingDisplayProps> = ({
         </button>
       </div>
       {/* Signs Container */}
-      <div className="flex-1">
+      <div className="flex-1 min-h-0 flex">
         <div
           id="signwriting-container"
-          className={`flex flex-${direction} items-center ${direction === "col" ? "space-y-4" : "space-x-4"}`}
+          className={`w-full h-full flex flex-${direction} items-center ${shouldCenter ? "justify-center" : "justify-start"} ${direction === "col" ? "space-y-4" : "space-x-4"}`}
           style={{
             fontSize: `${signSize}px`,
             color: "var(--text-primary)",
