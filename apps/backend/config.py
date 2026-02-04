@@ -4,17 +4,20 @@ from dotenv import load_dotenv
 import json
 from pathlib import Path
 
-# Load environment variables from root .env file
-root_dir = Path(__file__).parent.parent.parent  # Go up to Sign-bridge/
-env_path = root_dir / '.env'
-load_dotenv(env_path)
+# Load environment variables: backend dir first, then SignCast root (for local dev)
+# In Docker/Railway the app runs from /app, so only backend .env exists.
+backend_dir = Path(__file__).resolve().parent
+load_dotenv(backend_dir / ".env")
+signcast_dir = backend_dir.parent.parent
+if (signcast_dir / ".env").exists():
+    load_dotenv(signcast_dir / ".env")
 
 class Config:
     """Configuration class for the SignBridge backend"""
     
     # Server Configuration
     HOST: str = os.getenv("HOST", "127.0.0.1")
-    PORT: int = int(os.getenv("PORT", "8000"))
+    PORT: int = int(os.getenv("PORT", "8080"))  # Cloud Run uses 8080 by default
     DEBUG: bool = os.getenv("DEBUG", "true").lower() == "true"
     
     # API Keys and External Services

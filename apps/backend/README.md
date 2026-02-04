@@ -12,9 +12,9 @@ This backend provides the core API services for the SignBridge application, incl
 
 ### POST /transcribe
 
-- Accepts: WAV audio file (multipart/form-data)
+- Accepts: WAV (or other) audio file (multipart/form-data)
 - Returns: JSON with transcribed text
-- Uses: Python Whisper library for offline transcription
+- Uses: **Groq Whisper API** when `GROQ_API_KEY` is set (Railway/prod); optional local openai-whisper for dev
 
 ### POST /simplify_text
 
@@ -84,6 +84,7 @@ LOG_LEVEL=DEBUG
 ### System Dependencies
 
 - **ffmpeg**: Required for audio file conversion in the /transcribe endpoint. Install it using your system package manager:
+
   - macOS: `brew install ffmpeg`
   - Ubuntu/Debian: `sudo apt-get install ffmpeg`
   - Windows: [Download from ffmpeg.org](https://ffmpeg.org/download.html) and add to PATH.
@@ -116,6 +117,54 @@ uvicorn main:app --reload
 ```
 
 The backend will be available at the configured HOST:PORT (default: `http://127.0.0.1:8000`).
+
+## Deploying to Railway
+
+The backend is configured for Railway using **Nixpacks** (no Docker): `railway.json`, `nixpacks.toml` (Python + ffmpeg), and healthcheck at `/health`. Use one of these methods so the **Root Directory** setting never blocks deploys.
+
+### Recommended: Deploy backend as root (no Root Directory needed)
+
+1. **Clear Root Directory** in Railway so it is not used:
+
+   - [Railway](https://railway.app) → your project → **signcast-backend** → **Settings** → **Source**.
+   - Set **Root Directory** to **empty** (clear the field and save).
+
+2. **Deploy using the path-as-root flag** (from your workspace root, e.g. `Sign-Bridge`):
+
+   ```bash
+   railway link    # choose your project and signcast-backend service
+   railway up SignCast/apps/backend --path-as-root
+   ```
+
+   This uploads only `SignCast/apps/backend` and uses it as the project root, so Railway never looks for a Root Directory path.
+
+### Alternative: Deploy from the backend folder
+
+1. **Clear Root Directory** in Railway (leave it empty), as above.
+2. From the backend folder:
+
+   ```bash
+   cd SignCast/apps/backend
+   railway link
+   railway up
+   ```
+
+   The “linked directory” is then the backend folder, so the next `railway up` uploads that folder as the root.
+
+### If you use GitHub (push-to-deploy) only
+
+- Connect the repo in Railway and set **Root Directory** to **`apps/backend`** (your GitHub repo root is Sign-Cast, which contains `apps/backend`).
+
+### Environment variables
+
+In the service **Variables** tab set:
+
+- **`HOST=0.0.0.0`** (required so the server listens on Railway’s port)
+- **`GROQ_API_KEY`** (required for /transcribe on Railway; get one at [groq.com](https://console.groq.com))
+- **`PORT`** is set by Railway automatically
+- Any other API keys (e.g. for simplify, pose)
+
+**Railway free tier (<4 GB image):** This backend is slim by default—transcription uses Groq API (no local Whisper), and SignWriting translation is disabled on deploy. For full SignWriting locally, install `signwriting_translation` and `torch`.
 
 ## Configuration
 

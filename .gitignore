@@ -141,6 +141,9 @@ apps/backend/*.spec
 temp_audio/
 apps/backend/__pycache__/
 
+# Runtime ffmpeg shim (created on-demand by backend)
+apps/backend/.ffmpeg/
+
 # Documentation (internal use only)
 DEPLOYMENT.md
 app_idea.md
