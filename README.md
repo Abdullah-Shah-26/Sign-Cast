@@ -78,13 +78,16 @@ SignCast uses **local AI processing** with optional online enhancements:
 | Category       | Technology              | Purpose             |
 | -------------- | ----------------------- | ------------------- |
 | **Frontend**   | React + TypeScript      | UI Framework        |
-|                | Vite                    | Build Tool          |
-|                | Tailwind CSS            | Styling             |
-| **Backend**    | FastAPI                 | Web Framework       |
-|                | OpenAI Whisper          | Speech Recognition  |
+|                | Vite                    | High-Speed Build Tool |
+|                | Tailwind CSS            | Modern Styling      |
+|                | @sutton-signwriting     | SignWriting Engine  |
+|                | Pose Viewer             | 2D Visualization    |
+| **Backend**    | FastAPI                 | High-Perf API       |
 |                | PyTorch                 | ML Framework        |
-| **AI/ML**      | SignWriting Translation | Text-to-Sign Model  |
-|                | Groq API                | Text Simplification |
+|                | Sockeye                 | Neural Translation  |
+| **AI/ML**      | SignWriting Model       | Text-to-Sign NMT    |
+|                | OpenAI Whisper          | Speech Recognition  |
+|                | Groq API                | Fast Inference      |
 
 
 ## Quick Start

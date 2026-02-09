@@ -3,10 +3,10 @@
 # Test script for SignCast backend and frontend integration
 set -e
 
-echo "🧪 Testing SignCast Integration..."
+echo " Testing SignCast Integration..."
 
 # Test backend endpoints
-echo "🔧 Testing backend endpoints..."
+echo " Testing backend endpoints..."
 
 # Test simplify_text endpoint
 echo "  - Testing simplify_text endpoint..."
@@ -15,10 +15,10 @@ RESPONSE=$(curl -s -X POST http://127.0.0.1:8000/simplify_text \
   -d '{"text":"Hello world"}' | jq -r '.simplified_text' 2>/dev/null || echo "ERROR")
 
 if [[ "$RESPONSE" == "ERROR" ]]; then
-    echo "    ❌ simplify_text endpoint failed"
+    echo "     simplify_text endpoint failed"
     exit 1
 else
-    echo "    ✅ simplify_text endpoint working: $RESPONSE"
+    echo "     simplify_text endpoint working: $RESPONSE"
 fi
 
 # Test translate_signwriting endpoint
@@ -28,25 +28,25 @@ RESPONSE=$(curl -s -X POST http://127.0.0.1:8000/translate_signwriting \
   -d '{"text":"Hello"}' | jq -r '.signwriting' 2>/dev/null || echo "ERROR")
 
 if [[ "$RESPONSE" == "ERROR" ]]; then
-    echo "    ❌ translate_signwriting endpoint failed"
+    echo "     translate_signwriting endpoint failed"
     exit 1
 else
-    echo "    ✅ translate_signwriting endpoint working: $RESPONSE"
+    echo "     translate_signwriting endpoint working: $RESPONSE"
 fi
 
 # Test frontend accessibility
-echo "🎨 Testing frontend accessibility..."
+echo " Testing frontend accessibility..."
 if curl -s http://localhost:5173/ >/dev/null 2>&1; then
-    echo "  ✅ Frontend is accessible at http://localhost:5173"
+    echo "   Frontend is accessible at http://localhost:5173"
 else
-    echo "  ❌ Frontend is not accessible"
+    echo "   Frontend is not accessible"
     exit 1
 fi
 
 echo ""
-echo "🎉 All integration tests passed!"
+echo " All integration tests passed!"
 echo ""
-echo "📊 Summary:"
+echo  Summary:"
 echo "  - Backend: ✅ Running on http://127.0.0.1:8000"
 echo "  - Frontend: ✅ Running on http://localhost:5173"
 echo "  - API Endpoints: ✅ Working"

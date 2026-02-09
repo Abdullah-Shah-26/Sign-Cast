@@ -4,5 +4,5 @@ python-multipart
 requests
 python-dotenv
 
-# Transcription: use Groq API (set GROQ_API_KEY). No local Whisper = small image (<4 GB).
+# Transcription: use Groq API (set GROQ_API_KEY).
 # For local dev with offline Whisper: pip install openai-whisper imageio-ffmpeg
