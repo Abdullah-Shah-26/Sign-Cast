@@ -1,4 +1,4 @@
-# SignBridge Frontend (React + TypeScript + Vite)
+# SignCast Frontend (React + TypeScript + Vite)
 
 This frontend is a web app built with React, TypeScript, and Vite.
 
@@ -52,7 +52,7 @@ VITE_LOG_LEVEL=info
 
 ---
 
-## 🌐 Running in the Browser (Web Only)
+##  Running in the Browser (Web Only)
 
 1. **Install dependencies:**
    ```sh
@@ -72,7 +72,7 @@ VITE_LOG_LEVEL=info
 
 ---
 
-## ⚙️ Configuration
+##  Configuration
 
 The frontend uses a centralized configuration system in `src/config.ts` that loads all settings from environment variables. This makes it easy to:
 
@@ -92,13 +92,13 @@ The configuration automatically generates API endpoints based on the backend URL
 
 ---
 
-## ⚠️ Notes
+##  Notes
 
 - The backend **must** be running at the configured URL for the app to function.
 
 ---
 
-## 🛠️ Development
+##  Development
 
 - Lint: `npm run lint`
 - Build: `npm run build`
@@ -106,7 +106,7 @@ The configuration automatically generates API endpoints based on the backend URL
 
 ---
 
-## 📦 Project Structure
+##  Project Structure
 
 - `src/` - React app source code
 - `src/config.ts` - Configuration and environment variables
@@ -114,7 +114,7 @@ The configuration automatically generates API endpoints based on the backend URL
 
 ---
 
-## 📚 References
+## References
 
 - [Vite Documentation](https://vitejs.dev/)
 - [React Documentation](https://react.dev/)

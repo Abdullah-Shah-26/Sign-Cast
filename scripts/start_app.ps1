@@ -24,7 +24,7 @@ if (-not $shellExe) {
   throw 'No PowerShell executable found (pwsh/powershell.exe).'
 }
 
-Write-Host "Starting SignBridge..." -ForegroundColor Cyan
+Write-Host "Starting SignCast..." -ForegroundColor Cyan
 
 function Wait-ForUrl {
   param(

@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Test script for SignBridge backend and frontend integration
+# Test script for SignCast backend and frontend integration
 set -e
 
-echo "🧪 Testing SignBridge Integration..."
+echo "🧪 Testing SignCast Integration..."
 
 # Test backend endpoints
 echo "🔧 Testing backend endpoints..."
@@ -51,4 +51,4 @@ echo "  - Backend: ✅ Running on http://127.0.0.1:8000"
 echo "  - Frontend: ✅ Running on http://localhost:5173"
 echo "  - API Endpoints: ✅ Working"
 echo ""
-echo "🚀 SignBridge is ready to use!" 
+echo "🚀 SignCast is ready to use!" 

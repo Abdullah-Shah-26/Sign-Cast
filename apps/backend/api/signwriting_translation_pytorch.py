@@ -22,3 +22,4 @@ async def translate_signwriting(request: TextRequest):
         return {"signwriting": outputs[0]}
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Translation failed: {str(e)}")
+

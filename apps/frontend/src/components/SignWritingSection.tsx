@@ -1,5 +1,6 @@
 import React from "react";
 import SignWritingDisplay from "./SignWritingDisplay";
+import LoadingSpinner from "./LoadingSpinner";
 
 interface SignWritingSectionProps {
   signWriting: string[];
@@ -61,12 +62,7 @@ const SignWritingSection: React.FC<SignWritingSectionProps> = ({
         </div>
         {isGeneratingSigns ? (
           <div className="h-full flex items-center justify-center">
-            <div className="text-center">
-              <div className="w-12 h-12 loading-spinner mx-auto mb-4"></div>
-              <p className="text-sm font-medium text-black dark:text-white">
-                Processing signs...
-              </p>
-            </div>
+            <LoadingSpinner className="high-tech scale-75" text="Synthesizing Signs" />
           </div>
         ) : (
           <div className="flex-1 min-h-0 flex flex-col">

@@ -1,5 +1,6 @@
 import React from "react";
 import PoseViewer from "./PoseViewer";
+import LoadingSpinner from "./LoadingSpinner";
 
 interface AnimationSectionProps {
   poseFile: Blob | null;
@@ -57,12 +58,7 @@ const AnimationSection: React.FC<AnimationSectionProps> = ({
         )}
         <div className="flex items-center justify-center h-full w-full overflow-hidden">
           {isGeneratingAnimation ? (
-            <div className="text-center">
-              <div className="w-12 h-12 loading-spinner mx-auto mb-4"></div>
-              <p className="text-sm font-medium text-black dark:text-white">
-                Generating animation...
-              </p>
-            </div>
+            <LoadingSpinner className="high-tech scale-75" text="Generating Pose" />
           ) : poseFile ? (
             <div className="w-full h-full flex items-center justify-center overflow-hidden">
               <PoseViewer

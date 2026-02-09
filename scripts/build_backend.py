@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Build script for SignBridge backend
+Build script for SignCast backend
 Creates a standalone executable (PyInstaller) for the backend
 """
 
@@ -11,7 +11,7 @@ import platform
 from pathlib import Path
 
 def main():
-    print("🔧 Building SignBridge Backend...")
+    print("🔧 Building SignCast Backend...")
     
     # Get the project root
     project_root = Path(__file__).parent.parent

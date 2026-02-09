@@ -17,6 +17,20 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
     lg: 'w-12 h-12'
   };
 
+  if (className.includes('high-tech')) {
+    return (
+      <div className={`flex flex-col items-center justify-center ${className}`}>
+        <div className="high-tech-loader">
+          <div className="circle"></div>
+          <div className="circle"></div>
+          <div className="circle"></div>
+          <div className="scanning-line"></div>
+        </div>
+        {text && <p className="high-tech-text">{text}</p>}
+      </div>
+    );
+  }
+
   return (
     <div className={`flex flex-col items-center justify-center space-y-4 ${className}`}>
       <div className={`loading-spinner ${sizeClasses[size]}`}></div>

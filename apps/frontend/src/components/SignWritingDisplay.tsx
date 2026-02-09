@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import SignWritingService from "../services/SignWritingService";
+import LoadingSpinner from "./LoadingSpinner";
 
 interface SignWritingDisplayProps {
   fswTokens: string[];
@@ -12,9 +13,10 @@ const SignWritingDisplay: React.FC<SignWritingDisplayProps> = ({
   direction = "col",
   signSize = 48,
 }) => {
+  const [loading, setLoading] = useState(true);
   const [fontsLoaded, setFontsLoaded] = useState(false);
   const [normalizedTokens, setNormalizedTokens] = useState<string[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [isExporting, setIsExporting] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const shouldCenter = direction === "col" && normalizedTokens.length <= 1;
 
@@ -23,6 +25,10 @@ const SignWritingDisplay: React.FC<SignWritingDisplayProps> = ({
       try {
         setLoading(true);
         await SignWritingService.loadFonts();
+        // Wait for all fonts to be truly ready in the browser
+        if (document.fonts && document.fonts.ready) {
+          await document.fonts.ready;
+        }
         setFontsLoaded(true);
       } catch (error) {
         console.error("Failed to load SignWriting fonts:", error);
@@ -51,71 +57,56 @@ const SignWritingDisplay: React.FC<SignWritingDisplayProps> = ({
     normalizeTokens();
   }, [fswTokens, fontsLoaded]);
 
-  const handleSaveAsImage = () => {
-    console.log("Download button clicked");
+  const handleSaveAsImage = async () => {
+    if (!containerRef.current) return;
+    
+    try {
+      setIsExporting(true);
+      
+      // Ensure fonts are ready before we even start
+      if (document.fonts) {
+        await Promise.all([
+          document.fonts.load('1em SuttonSignWritingLine'),
+          document.fonts.load('1em SuttonSignWritingFill')
+        ]);
+      }
 
-    // Simple solution: Guide user to use browser screenshot
-    const userConfirmed = window.confirm(
-      "To capture the visual SignWriting symbols:\n\n" +
-        "1. Press Ctrl+Shift+S (Windows/Linux) or Cmd+Shift+4 (Mac)\n" +
-        "2. Select the SignWriting area to screenshot\n" +
-        "3. Save the image\n\n" +
-        "Click OK to download the text version instead, or Cancel to take a screenshot.",
-    );
-
-    if (!userConfirmed) {
-      return; // User wants to take screenshot manually
-    }
-
-    // Download text version
-    const textContent = [
-      "SignCast - Sign Writing Export",
-      "================================",
-      `Generated: ${new Date().toLocaleString()}`,
-      `Number of signs: ${normalizedTokens.length}`,
-      "",
-      "FSW Tokens:",
-      ...normalizedTokens.map((token, i) => `${i + 1}. ${token}`),
-      "",
-      "Raw FSW String:",
-      normalizedTokens.join(" "),
-    ].join("\n");
-
-    const blob = new Blob([textContent], { type: "text/plain" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "signcast-signwriting.txt";
-    document.body.appendChild(a);
-    a.click();
-    setTimeout(() => {
+      const { default: html2canvas } = await import('html2canvas');
+      const element = containerRef.current;
+      
+      // Wait a bit longer for the web components to be stable
+      await new Promise(r => setTimeout(r, 500));
+      
+      const canvas = await html2canvas(element, {
+        backgroundColor: document.documentElement.getAttribute('data-theme') === 'dark' ? '#0a0a0a' : '#ffffff',
+        scale: 3,
+        logging: true,
+        useCORS: true,
+        allowTaint: true,
+      });
+      
+      const image = canvas.toDataURL("image/png");
+      const a = document.createElement("a");
+      a.href = image;
+      a.download = `signcast-translation-${new Date().getTime()}.png`;
+      document.body.appendChild(a);
+      a.click();
       document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-    }, 100);
-
-    console.log("Text download initiated");
+      
+      console.log("Image export successful");
+    } catch (error) {
+      console.error("Failed to export SignWriting image:", error);
+      alert("Failed to generate image. Please try taking a manual screenshot.");
+    } finally {
+      setIsExporting(false);
+    }
   };
 
   if (loading) {
     return (
       <div className="flex items-center justify-center h-full">
         <div className="text-center">
-          <div
-            className="inline-flex items-center justify-center w-12 h-12 mb-4 rounded-full"
-            style={{ background: "var(--bg-primary)" }}
-          >
-            <div
-              className="w-6 h-6 loading-spinner"
-              style={{
-                borderTopColor: "var(--primary-500)",
-                borderRightColor: "var(--primary-500)",
-                borderWidth: "2px",
-              }}
-            ></div>
-          </div>
-          <p className="text-sm text-theme-secondary font-medium">
-            Loading SignWriting fonts...
-          </p>
+          <LoadingSpinner className="scale-75" text="Loading Fonts" />
         </div>
       </div>
     );
@@ -186,28 +177,25 @@ const SignWritingDisplay: React.FC<SignWritingDisplayProps> = ({
   }
 
   return (
-    <div className="h-full flex flex-col min-h-0">
-      {/* Save as Image Button */}
-      <div className="flex justify-end mb-2">
+    <div className="h-full flex flex-col min-h-0 relative">
+      {/* Export Overlay */}
+      {isExporting && (
+        <div className="absolute inset-0 z-50 flex items-center justify-center bg-white/80 dark:bg-black/80 backdrop-blur-sm rounded-lg">
+          <LoadingSpinner className="high-tech scale-75" text="Rendering Export" />
+        </div>
+      )}
+
+      {/* Action Buttons */}
+      <div className="flex justify-end gap-2 mb-2">
         <button
           onClick={handleSaveAsImage}
-          title="Download SignWriting"
-          className="p-2 rounded hover:bg-black/10 dark:hover:bg-white/10 transition-colors text-black dark:text-white"
+          title="Download as PNG"
+          className="p-2 rounded hover:bg-black/10 dark:hover:bg-white/10 transition-colors text-black dark:text-white flex items-center gap-2"
         >
-          <svg
-            width="20"
-            height="20"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4m4-5l3 3m0 0l3-3m-3 3V3"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
+          <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
           </svg>
+          <span className="text-[10px] uppercase font-bold tracking-tight">PNG</span>
         </button>
       </div>
       {/* Signs Container */}
@@ -218,6 +206,7 @@ const SignWritingDisplay: React.FC<SignWritingDisplayProps> = ({
           style={{
             fontSize: `${signSize}px`,
             color: "var(--text-primary)",
+            fontFamily: "'SuttonSignWritingLine', 'SuttonSignWritingFill', sans-serif",
           }}
           ref={containerRef}
         >

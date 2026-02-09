@@ -1,8 +1,8 @@
-# SignBridge Backend
+# SignCast Backend
 
 ## Overview
 
-This backend provides the core API services for the SignBridge application, including:
+This backend provides the core API services for the SignCast application, including:
 
 - Offline speech-to-text transcription using the Python Whisper library
 - Optional online text simplification via Groq API

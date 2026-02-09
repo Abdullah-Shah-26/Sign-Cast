@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Script to start SignBridge (web frontend + backend)
+# Script to start SignCast (web frontend + backend)
 set -e
 
-echo "🚀 Starting SignBridge..."
+echo "🚀 Starting SignCast..."
 
 # Get the project root directory
 PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -83,7 +83,7 @@ npm run dev &
 FRONTEND_PID=$!
 cd ../..
 
-echo "🎉 SignBridge started successfully!"
+echo "🎉 SignCast started successfully!"
 echo "🌐 Open the web app at http://localhost:5173"
 echo "🔧 Backend running on http://127.0.0.1:8000"
 echo "🌐 Frontend running on http://localhost:5173"

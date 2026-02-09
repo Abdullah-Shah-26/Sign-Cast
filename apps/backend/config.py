@@ -13,7 +13,7 @@ if (signcast_dir / ".env").exists():
     load_dotenv(signcast_dir / ".env")
 
 class Config:
-    """Configuration class for the SignBridge backend"""
+    """Configuration class for the SignCast backend"""
     
     # Server Configuration
     HOST: str = os.getenv("HOST", "127.0.0.1")

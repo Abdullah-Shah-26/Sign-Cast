@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# Production build script for SignBridge (web frontend)
+# Production build script for SignCast (web frontend)
 
 set -e
 
-echo "🚀 Building SignBridge for Production..."
+echo "🚀 Building SignCast for Production..."
 
 # Get the project root directory
 PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
