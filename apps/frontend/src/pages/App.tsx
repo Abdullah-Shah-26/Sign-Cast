@@ -193,20 +193,20 @@ function App() {
             isTranslating={isTranslating}
           />
 
-          {/* SignWriting Display - Enhanced */}
+          {/* SignWriting Display */}
           <SignWritingSection
             signWriting={signWriting}
             isGeneratingSigns={isGeneratingSigns}
           />
 
-          {/* Animation Section - Enhanced */}
+          {/* Animation Section */}
           <AnimationSection
             poseFile={poseFile}
             isGeneratingAnimation={isGeneratingAnimation}
           />
         </div>
 
-        {/* Bottom components with consistent spacing */}
+        {/* Bottom components*/}
         <div className="mt-8 space-y-6">
           <ErrorDisplay error={error} />
           <TranscriptionDisplay transcription={transcription} />
