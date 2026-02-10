@@ -147,6 +147,7 @@ apps/backend/.ffmpeg/
 # Documentation (internal use only)
 DEPLOYMENT.md
 app_idea.md
+DEVPOST.md
 
 #the uneeded repos
 translate/
