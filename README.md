@@ -94,29 +94,32 @@ SignCast uses **local AI processing** with optional online enhancements:
 |                | OpenAI Whisper          | Speech Recognition  |
 |                | Groq API                | Fast Inference      |
 
-## Live Translation Preview
+
+
+## Screenshots
+
+| | |
+|:---:|:---:|
+| **Light Mode** | **Dark Mode** |
+| ![Light Mode](public/Home-Page-Light-Mode.png) | ![Dark Mode](public/Dark-Mode.png) |
+| **Voice Recording** | **System Audio** |
+| ![Voice Recording](public/Record%20Mic-Voice.png) | ![System Audio](public/Record-System-Voice.png) |
+
+### Mobile View
+<div align="center">
+  <img src="public/Mobile-View-1.png" width="200" alt="Mobile View 1">
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="public/Mobile-View-2.png" width="200" alt="Mobile View 2">
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="public/Mobile-View-3.png" width="200" alt="Mobile View 3">
+</div>
+
+### Live Translation Preview
 
 <div align="center">
   <img src="public/Signs.gif" width="600" alt="SignWriting Translation Animation">
   <p><i><b>SignWriting</b>: A visual notation system that captures the physical movements, handshapes, and facial expressions of sign languages, preserving their exact meaning in a written format.</i></p>
 </div>
-
-## Screenshots
-
-### Light Mode
-![Light Mode](public/Home-Page-Light-Mode.png)
-
-### Dark Mode
-![Dark Mode](public/Dark-Mode.png)
-
-### Voice Recording
-![Voice Recording](public/Record%20Mic-Voice.png)
-
-### System Audio
-![System Audio](public/Record-System-Voice.png)
-
-### Mobile View
-![Mobile View](public/Mobile-Responsive.png)
 
 
 ## Quick Start
