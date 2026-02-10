@@ -2,6 +2,11 @@
 
 Real-time voice-to-sign language translator powered by AI
 
+## Live Demo
+Watch SignCast in action: [YouTube Demo](https://www.youtube.com/watch?v=hIiESRyNNo0)
+
+
+
 ## What is SignCast?
 
 SignCast translates spoken English into **SignWriting notation** and **animated sign language** in real-time. Built for accessibility, it helps Deaf and hard-of-hearing users access spoken content anywhere.
@@ -88,6 +93,30 @@ SignCast uses **local AI processing** with optional online enhancements:
 | **AI/ML**      | SignWriting Model       | Text-to-Sign NMT    |
 |                | OpenAI Whisper          | Speech Recognition  |
 |                | Groq API                | Fast Inference      |
+
+## Live Translation Preview
+
+<div align="center">
+  <img src="public/Signs.gif" width="600" alt="SignWriting Translation Animation">
+  <p><i><b>SignWriting</b>: A visual notation system that captures the physical movements, handshapes, and facial expressions of sign languages, preserving their exact meaning in a written format.</i></p>
+</div>
+
+## Screenshots
+
+### Light Mode
+![Light Mode](public/Home-Page-Light-Mode.png)
+
+### Dark Mode
+![Dark Mode](public/Dark-Mode.png)
+
+### Voice Recording
+![Voice Recording](public/Record%20Mic-Voice.png)
+
+### System Audio
+![System Audio](public/Record-System-Voice.png)
+
+### Mobile View
+![Mobile View](public/Mobile-Responsive.png)
 
 
 ## Quick Start
