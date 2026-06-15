@@ -3,7 +3,7 @@
 Real-time voice-to-sign language translator powered by AI
 
 ## Live Demo
-Watch SignCast in action: [YouTube Demo](https://www.youtube.com/watch?v=hIiESRyNNo0)
+Watch SignCast in action: [YouTube](https://www.youtube.com/watch?v=hIiESRyNNo0)
 
 
 
