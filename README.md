@@ -151,10 +151,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed development setup instructio
 - **Education** - Learning tool for sign language
 - **Accessibility** - Making spoken content accessible to Deaf users
 
-## Contributing
-
-We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for development setup and guidelines.
-
 ## Acknowledgments
 
 - [OpenAI Whisper](https://github.com/openai/whisper) - Speech recognition
