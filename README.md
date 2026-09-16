@@ -118,16 +118,16 @@ SignCast uses **local AI processing** with optional online enhancements:
   <p><i><b>SignWriting</b>: A visual notation system that captures the physical movements, handshapes, and facial expressions of sign languages, preserving their exact meaning in a written format.</i></p>
 </div>
 
+## Contributing
+
+We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for development setup and guidelines.
+
 ## Use Cases
 
 - **Live Meetings** - Real-time translation of spoken content
 - **Video Content** - Translate audio from videos and media
 - **Education** - Learning tool for sign language
 - **Accessibility** - Making spoken content accessible to Deaf users
-
-## Contributing
-
-We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for development setup and guidelines.
 
 ## Roadmap
 
