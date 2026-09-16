@@ -136,10 +136,6 @@ We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for deve
 - Real-time Collaboration - Multi-user sessions
 - Offline Pose Generation - Remove dependency on external pose API
 
-## License
-
-MIT License - see [LICENSE](LICENSE) for details.
-
 ## Acknowledgments
 
 - [OpenAI Whisper](https://github.com/openai/whisper) - Speech recognition
