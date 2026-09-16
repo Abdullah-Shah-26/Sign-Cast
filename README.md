@@ -3,9 +3,8 @@
 Real-time voice-to-sign language translator powered by AI
 
 ## Live Demo
+
 Watch SignCast in action: [YouTube Demo](https://www.youtube.com/watch?v=hIiESRyNNo0)
-
-
 
 ## What is SignCast?
 
@@ -80,32 +79,31 @@ SignCast uses **local AI processing** with optional online enhancements:
 
 ## Tech Stack
 
-| Category       | Technology              | Purpose             |
-| -------------- | ----------------------- | ------------------- |
-| **Frontend**   | React + TypeScript      | UI Framework        |
-|                | Vite                    | High-Speed Build Tool |
-|                | Tailwind CSS            | Modern Styling      |
-|                | @sutton-signwriting     | SignWriting Engine  |
-|                | Pose Viewer             | 2D Visualization    |
-| **Backend**    | FastAPI                 | High-Perf API       |
-|                | PyTorch                 | ML Framework        |
-|                | Sockeye                 | Neural Translation  |
-| **AI/ML**      | SignWriting Model       | Text-to-Sign NMT    |
-|                | OpenAI Whisper          | Speech Recognition  |
-|                | Groq API                | Fast Inference      |
-
-
+| Category     | Technology          | Purpose               |
+| ------------ | ------------------- | --------------------- |
+| **Frontend** | React + TypeScript  | UI Framework          |
+|              | Vite                | High-Speed Build Tool |
+|              | Tailwind CSS        | Modern Styling        |
+|              | @sutton-signwriting | SignWriting Engine    |
+|              | Pose Viewer         | 2D Visualization      |
+| **Backend**  | FastAPI             | High-Perf API         |
+|              | PyTorch             | ML Framework          |
+|              | Sockeye             | Neural Translation    |
+| **AI/ML**    | SignWriting Model   | Text-to-Sign NMT      |
+|              | OpenAI Whisper      | Speech Recognition    |
+|              | Groq API            | Fast Inference        |
 
 ## Screenshots
 
-| | |
-|:---:|:---:|
-| **Light Mode** | **Dark Mode** |
-| ![Light Mode](public/Home-Page-Light-Mode.png) | ![Dark Mode](public/Dark-Mode.png) |
-| **Voice Recording** | **System Audio** |
+|                                                   |                                                 |
+| :-----------------------------------------------: | :---------------------------------------------: |
+|                  **Light Mode**                   |                  **Dark Mode**                  |
+|  ![Light Mode](public/Home-Page-Light-Mode.png)   |       ![Dark Mode](public/Dark-Mode.png)        |
+|                **Voice Recording**                |                **System Audio**                 |
 | ![Voice Recording](public/Record%20Mic-Voice.png) | ![System Audio](public/Record-System-Voice.png) |
 
 ### Mobile View
+
 <div align="center">
   <img src="public/Mobile-View-1.png" width="200" alt="Mobile View 1">
   &nbsp;&nbsp;&nbsp;&nbsp;
@@ -121,29 +119,6 @@ SignCast uses **local AI processing** with optional online enhancements:
   <p><i><b>SignWriting</b>: A visual notation system that captures the physical movements, handshapes, and facial expressions of sign languages, preserving their exact meaning in a written format.</i></p>
 </div>
 
-
-## Quick Start
-
-### Run Locally
-
-```bash
-# Clone the repository
-git clone https://github.com/your-org/SignCast.git
-cd SignCast
-
-# Quick start (Windows)
-.\scripts\start_app.ps1
-
-# Quick start (Linux/Mac)
-./scripts/start_app.sh
-
-# Open http://localhost:5173
-```
-
-### Development Setup
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed development setup instructions.
-
 ## Use Cases
 
 - **Live Meetings** - Real-time translation of spoken content
@@ -153,7 +128,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed development setup instructio
 
 ## Contributing
 
-We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for development setup and guidelines.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup and guidelines.
 
 ## Roadmap
 
@@ -161,10 +136,6 @@ We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for deve
 - Improved Models - Better SignWriting translation accuracy
 - Real-time Collaboration - Multi-user sessions
 - Offline Pose Generation - Remove dependency on external pose API
-
-## License
-
-MIT License - see [LICENSE](LICENSE) for details.
 
 ## Acknowledgments
 
