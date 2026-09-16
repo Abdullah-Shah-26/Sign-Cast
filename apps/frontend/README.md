@@ -4,7 +4,7 @@ This frontend is a web app built with React, TypeScript, and Vite.
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. **Backend Requirement**
 

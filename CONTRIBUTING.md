@@ -45,7 +45,6 @@ cd apps/frontend
 npm install
 npm run dev
 ```
-
 ## Environment Setup
 
 Copy `.env.example` to `.env` and configure:

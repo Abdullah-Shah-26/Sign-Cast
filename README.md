@@ -3,8 +3,7 @@
 Real-time voice-to-sign language translator powered by AI
 
 ## Live Demo
-
-Watch SignCast in action: [YouTube Demo](https://www.youtube.com/watch?v=hIiESRyNNo0)
+Watch SignCast in action: [YouTube](https://www.youtube.com/watch?v=hIiESRyNNo0)
 
 ## What is SignCast?
 
@@ -128,7 +127,7 @@ SignCast uses **local AI processing** with optional online enhancements:
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup and guidelines.
+We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for development setup and guidelines.
 
 ## Roadmap
 
@@ -136,6 +135,10 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup and guidelines.
 - Improved Models - Better SignWriting translation accuracy
 - Real-time Collaboration - Multi-user sessions
 - Offline Pose Generation - Remove dependency on external pose API
+
+## License
+
+MIT License - see [LICENSE](LICENSE) for details.
 
 ## Acknowledgments
 
